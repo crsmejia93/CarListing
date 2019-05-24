@@ -97,6 +97,7 @@ public class HomeController {
     @RequestMapping("/delete/{id}")
     public String deleteCar(@PathVariable("id") long id){
         carRepository.deleteById(id);
+        System.out.println(carRepository.count());
         return "redirect:/";
     }
 }

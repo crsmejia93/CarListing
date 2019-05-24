@@ -13,7 +13,7 @@ public class Category {
     @NotNull
     private String title;
 
-    @OneToMany(mappedBy = "category", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "category", cascade = CascadeType.ALL, orphanRemoval=true)
     public Set<Car> cars;
 
     public Long getId() {
@@ -34,6 +34,10 @@ public class Category {
 
     public Set<Car> getCars() {
         return cars;
+    }
+
+    public void removeCar(Car car){
+        cars.remove(car);
     }
 
     public void setCars(Set<Car> cars) {
